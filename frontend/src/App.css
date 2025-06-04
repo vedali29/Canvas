@@ -1,0 +1,239 @@
+/* App.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles */
+.App {
+  text-align: left;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Prevent text selection on canvas elements */
+.canvas-element {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Loading animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .canvas-container {
+    overflow-x: auto;
+  }
+  
+  .sidebar {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Disabled state styles */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Toast notification styles */
+.toast {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Canvas specific styles */
+.canvas-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-element {
+  transition: all 0.1s ease;
+}
+
+.canvas-element:hover {
+  opacity: 0.9;
+}
+
+.canvas-element.selected {
+  z-index: 10;
+}
+
+.canvas-element.dragging {
+  transition: none;
+  z-index: 15;
+}
+
+/* Selection indicator */
+.selection-indicator {
+  pointer-events: none;
+  animation: dashArray 1s linear infinite;
+}
+
+@keyframes dashArray {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 20;
+  }
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input:disabled {
+  background-color: #F9FAFB;
+  color: #6B7280;
+  cursor: not-allowed;
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #3B82F6;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2563EB;
+}
+
+.btn-secondary {
+  background-color: #6B7280;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #4B5563;
+}
+
+.btn-danger {
+  background-color: #EF4444;
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #DC2626;
+}
+
+.btn-success {
+  background-color: #10B981;
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #059669;
+}
+
+/* Utility classes */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadow-custom {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .canvas-area {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
