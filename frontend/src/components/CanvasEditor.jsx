@@ -63,7 +63,7 @@ function CanvasEditor() {
 
   useEffect(() => {
     initializeCanvas();
-  }, []);
+  }, [initializeCanvas]);
 
   useEffect(() => {
     if (canvas.width && canvas.height) {
